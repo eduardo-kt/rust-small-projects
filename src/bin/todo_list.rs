@@ -21,7 +21,13 @@ fn main() {
                 tasks.push(Task::new(desc));
                 println!("Tarefa adicionada");
             },
-            "2" =>{},
+            "2" =>{
+                println!("\nTarefas:");
+                for (i, task) in tasks.iter().enumerate() {
+                    let status = if task.completed {"[X]"} else {"[ ]"};
+                    println!("{} - {} {}", i, status, task.title);
+                }
+            },
             "3" =>{},
             "4" =>{},
             "5" => {
