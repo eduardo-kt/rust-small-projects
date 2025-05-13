@@ -1,12 +1,15 @@
 use std::io;
 use std::cmp::Ordering;
 use rand::Rng;
-// todo: docstring
-// erro ao tentar numero fora do range
+
+/// # Gessing Game 
+/// From Klabnik, S., & Nichols, C. (2023). The Rust programming language (2nd edition).
+/// with extra validation to guess number between allowed range (1..=100)
+
 fn main() {
     println!("Guessing Game:");
     
-
+    // random number generator
     let secret_number = rand::rng().random_range(1..=100);
 
     loop {
@@ -18,6 +21,7 @@ fn main() {
             .expect("Failed to read data from terminal.");
 
         let guess: u32 = match guess.trim().parse() {
+            // additional range validation
             Ok(num) if (1..=100).contains(&num) => num,
             Ok(_) => {
                 println!("Choose a valid number");
