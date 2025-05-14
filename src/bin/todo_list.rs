@@ -28,8 +28,32 @@ fn main() {
                     println!("{} - {} {}", i, status, task.title);
                 }
             },
-            "3" =>{},
-            "4" =>{},
+            "3" =>{
+                let index = read_input("Digite o número da tarefa para marcar como concluída: ");
+                if let Ok(i) = index.trim().parse::<usize>() {
+                    if let Some(task) = tasks.get_mut(i) {
+                        task.completed = true;
+                        println!("Tarefa Marcada como concluída!");
+                    } else {
+                        println!("Índice Inválido");
+                    }
+                } else {
+                    println!("Entrada inválida.");
+                }
+            },
+            "4" =>{
+                let index = read_input("Digite o número da tarefa a remover: ");
+                if let Ok(i) = index.trim().parse::<usize>() {
+                    if i < tasks.len() {
+                        tasks.remove(i);
+                        println!("Tarefa removida");
+                    } else {
+                        println!("Índice Inválido");
+                    }
+                } else {
+                    println!("Entrada Inválida");
+                }
+            },
             "5" => {
                 println!("Saindo...");
                 break;
