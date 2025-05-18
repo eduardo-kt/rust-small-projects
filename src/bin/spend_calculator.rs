@@ -93,6 +93,38 @@ fn adicionar_despesa(despesas: &mut Vec<Despesa>, pessoas: &Vec<String>) {
 
 }
 
-fn listar_despesas() {}
+fn listar_despesas(despesas: &Vec<Despesa>) {
+    println!("== Lista de Despesas ==");
+    for d in despesas {
+        println!(
+            "{} gastou R${:.2} em \"{}\"",d.pessoa, d.valor, d.descricao
+        );
+    }
+}
 
-fn calcular_divisao() {}
+fn calcular_divisao(despesas: &Vec<Despesa>, pessoas: &Vec<String>) {
+    let total: f64 = despesas.iter().map(|d| d.valor).sum();
+    let valor_individual = total / pessoas.len() as f64;
+
+    let mut pagos: HashMap<String, f64> = HashMap::new();
+
+    for d in despesas {
+        *pagos.entry(d.pessoa.clone()).or_insert(0.0) += d.valor;
+    }
+
+    println!(" # Saldo por Pessoa #");
+    for pessoa in pessoas {
+        let pagou = pagos.get(pessoa).unwrap_or(&0.0);
+        let saldo = pagou - valor_individual;
+
+        if saldo > 0.0 {
+            println!("{} tem R${:.2} a receber", pessoa, saldo);
+        } else if saldo < 0.0 {
+            println!("{} tem saldo de R${:.2}", pessoa, saldo);
+        } else {
+            println!("{} está quite", pessoa);
+        }
+
+    }
+    
+}
