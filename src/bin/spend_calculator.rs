@@ -7,7 +7,7 @@ struct Despesa {
     valor: f64,
     descricao: String,
 }
-
+// TODO: refatorar main. colocar f-auxiliares no modulo spend_calculator
 fn main() {
     let mut pessoas: Vec<String> = Vec::new();
     let mut despesas: Vec<Despesa> = Vec::new();
@@ -24,7 +24,7 @@ fn main() {
         "#);
 
         let mut escolha = String::new();
-        // TODO: implementar com expect ao inves de unwrap
+        // TODO: implementar com expect ao inves de unwrap. ver todos
         io::stdin().read_line(&mut escolha).unwrap(); 
         let escolha = escolha.trim();
 
@@ -41,7 +41,8 @@ fn main() {
         }
     }
 }
-
+// TODO: adicionar persistencia de dados
+// TODO: adicionar testes unitários
 fn adicionar_pessoa(pessoas: &mut Vec<String>) {
     println!("Digite o nome da pessoa: ");
     let mut nome = String::new();
@@ -101,7 +102,7 @@ fn listar_despesas(despesas: &Vec<Despesa>) {
         );
     }
 }
-
+// TODO: tratar divisão por zero em valor individual
 fn calcular_divisao(despesas: &Vec<Despesa>, pessoas: &Vec<String>) {
     let total: f64 = despesas.iter().map(|d| d.valor).sum();
     let valor_individual = total / pessoas.len() as f64;
