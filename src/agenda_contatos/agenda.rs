@@ -18,11 +18,10 @@ impl Agenda {
         &self.contatos
     }
 
-    pub fn buscar_por_nome(&self, nome: &str) -> Vec<&Contato> {
+    pub fn buscar_por_nome(&mut self, nome: &str) -> Option<&mut Contato> {
         self.contatos
-            .iter()
-            .filter(|c| c.nome.to_lowercase().contains(&nome.to_lowercase()))
-            .collect()
+            .iter_mut()
+            .find(|c| c.nome == nome)
     }
 
     pub fn remover(&mut self, index: usize) -> Option<Contato> {
@@ -40,5 +39,10 @@ impl Agenda {
         } else {
             Err(())
         }
+    }
+    pub fn remover_contato_por_nome(&mut self, nome: &str) -> bool {
+        let original_len = self.contatos.len();
+        self.contatos.retain(|c| c.nome != nome);
+        original_len != self.contatos.len()
     }
 }
