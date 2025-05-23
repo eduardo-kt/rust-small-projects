@@ -2,7 +2,7 @@ use crate::agenda_contatos::contato::Contato;
 
 #[derive(Default)]
 pub struct Agenda {
-    contatos: Vec<Contato>,
+    pub contatos: Vec<Contato>,
 }
 
 impl Agenda {
