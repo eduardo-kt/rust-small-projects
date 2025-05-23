@@ -9,3 +9,5 @@ plotters = "0.3"
 regex = "1.7"
 serde_json = "1.0"
 serde = { version="1.0", features = ["derive"]}
+dioxus = {version="0.5", features=["desktop"]}
+dioxus-desktop="0.5"
