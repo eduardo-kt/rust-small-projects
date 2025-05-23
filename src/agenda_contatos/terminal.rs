@@ -37,7 +37,33 @@ pub fn adicionar_contato(agenda: &mut Agenda){
 }
 
 pub fn buscar_contato(agenda: &Agenda){
-    //TODO
+    println!("Digite o nome para buscar: ");
+    let mut termo = String::new();
+    io::stdin().read_line(&mut termo).unwrap();
+    let termo = termo.trim().to_lowercase();
+
+    let mut encontrados = vec![];
+
+    for contato in &agenda.contatos {
+        if contato.nome.to_lowercase().contains(&termo) {
+            encontrados.push(contato);
+        }
+    }
+
+    if encontrados.is_empty() {
+        println!("Nenhum contato encontrado com o nome informado");
+    } else {
+        println!("Contatos encontrados:");
+        for (i, contato) in encontrados.iter().enumerate() {
+            println!(
+                "{} - Nome: {}, Telefone: {}, Email: {}",
+                i + 1,
+                contato.nome,
+                contato.telefone,
+                contato.email,
+            );
+        }
+    }
 }
 
 pub fn atualizar_contato(agenda: &mut Agenda){
