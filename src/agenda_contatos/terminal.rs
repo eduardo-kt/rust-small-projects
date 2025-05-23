@@ -67,9 +67,42 @@ pub fn buscar_contato(agenda: &Agenda){
 }
 
 pub fn atualizar_contato(agenda: &mut Agenda){
-    //TODO
+    println!("Digite o nome do contato a ser atualizado: ");
+    let mut nome = String::new();
+    io::stdin().read_line(&mut nome).unwrap();
+    let nome = nome.trim();
+
+    if let Some(contato) = agenda.buscar_por_nome(nome) {
+        println!("Novo telefone: ");
+        let mut telefone = String::new();
+        io::stdin().read_line(&mut telefone).unwrap();
+        let telefone = telefone.trim();
+        if !telefone.is_empty() {
+            contato.telefone = telefone.to_string();
+        }
+
+        println!("Novo email: ");
+        let mut email = String::new();
+        io::stdin().read_line(&mut email).unwrap();
+        let email = email.trim();
+        if !email.is_empty() {
+            contato.email = email.to_string();
+        }
+        println!("Contato atualizado com sucesso");
+    } else {
+        println!("Contato não identificado");
+    }
 }
 
 pub fn remover_contato(agenda: &mut Agenda){
-    //TODO
+    println!("Digite o nome do contato a ser removido: ");
+    let mut nome = String::new();
+    io::stdin().read_line(&mut nome).unwrap();
+    let nome = nome.trim();
+
+    if agenda.remover_contato_por_nome(nome) {
+        println!("Contato removido com sucesso");        
+    } else {
+        println!("Contato não encontrado");
+    }
 }
