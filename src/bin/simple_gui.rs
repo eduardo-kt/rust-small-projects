@@ -4,7 +4,11 @@ fn main() {
     dioxus::launch(app);
 }
 
-#[component]
+
 fn app() -> Element {
-    rsx!("Hello World!")
+    
+    rsx! {
+        h1 { "Hello World!" }
+        
+    }    
 }
