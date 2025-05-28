@@ -1,4 +1,4 @@
-use std::io;
+use std::io::{self, Write};
 
 fn fatorial(n: u32) -> u32 {
     if n == 0 || n == 1 {
@@ -12,7 +12,9 @@ fn main() {
     println!(r#"
     Calculo fatorial:
     ================
-    Digite um número para cálculo fatorial: "#);
+    "#);
+    print!("Digite um número para cálculo fatorial: ");
+    io::stdout().flush().unwrap();
     let valor: u32 = loop {
         let mut entrada = String::new();  
         io::stdin().read_line(&mut entrada).expect("Erro ao ler entrada do terminal");
