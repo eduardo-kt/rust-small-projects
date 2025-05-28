@@ -8,7 +8,31 @@ fn fatorial(n: u32) -> u32 {
     }
 }
 
+//TODO: função para retornar número fibonacci menor que x
+
+fn fibo(n:usize) -> usize {
+    let (mut a, mut b) = (0,1);    
+    loop {
+        println!("{}",a);
+        if a >= n {
+            break;
+        } else {
+            let temp = a;
+            a=b;
+            b=temp+b;
+        }
+    }
+    a
+}
+
+//TODO: função que retorna  número na posição x da seq fibonacci 
+//TODO: função para retornar sequencia fibonacci entre x e y
+//TODO: função para retornar número fibonacci mais próximo de x
+
 fn main() {
+    let fb = fibo(20);
+    println!("{}", fb);
+    
     println!(r#"
     Calculo fatorial:
     ================
@@ -27,5 +51,5 @@ fn main() {
         }
     };
     let resultado = fatorial(valor);    
-    println!("O fatorial de {} é {}", valor, resultado);
+    println!("O fatorial de {} é {}", valor, resultado);     
 }
