@@ -9,6 +9,10 @@ fn fatorial(n: u32) -> u32 {
 }
 
 fn main() {
+    println!(r#"
+    Calculo fatorial:
+    ================
+    Digite um número para cálculo fatorial: "#);
     let valor: u32 = loop {
         let mut entrada = String::new();  
         io::stdin().read_line(&mut entrada).expect("Erro ao ler entrada do terminal");
@@ -20,6 +24,6 @@ fn main() {
             }
         }
     };
-    let resultado = fatorial(valor);
-    println!("{}", resultado);
+    let resultado = fatorial(valor);    
+    println!("O fatorial de {} é {}", valor, resultado);
 }
