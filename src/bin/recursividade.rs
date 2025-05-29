@@ -8,6 +8,14 @@ fn fatorial(n: u32) -> u32 {
     }
 }
 
+fn soma_digitos(n: u32) -> u32 {
+    if n < 10 {
+        n
+    } else {
+        (n % 10) + soma_digitos(n / 10)
+    }
+}
+
 //TODO: implementar fns fibonacci como struct
 
 
@@ -70,6 +78,10 @@ fn fibo_closest_to(number:usize) -> usize {
 }
 
 fn main() {
+
+    let somadigit = soma_digitos(127);
+    println!("{}", somadigit);
+    
     let fib1 = fibo(20);
     println!("Número Fibonacci menor que 20 eh {}", fib1);
     
