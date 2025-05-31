@@ -36,7 +36,7 @@ pub fn adicionar_contato(agenda: &mut Agenda){
     }
 }
 
-pub fn buscar_contato(agenda: &Agenda){
+pub fn buscar_contato(_agenda: &Agenda){
     println!("Digite o nome para buscar: ");
     let mut termo = String::new();
     io::stdin().read_line(&mut termo).unwrap();
@@ -44,7 +44,7 @@ pub fn buscar_contato(agenda: &Agenda){
 
     let mut encontrados = vec![];
 
-    for contato in &agenda.contatos {
+    for contato in &_agenda.contatos {
         if contato.nome.to_lowercase().contains(&termo) {
             encontrados.push(contato);
         }
