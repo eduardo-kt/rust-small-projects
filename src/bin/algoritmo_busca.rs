@@ -1,4 +1,5 @@
 use std::cmp::Ordering;
+use rand;
 
 
 fn busca_sequencial(lista: &[i32], alvo: i32) -> Option<usize> {
@@ -16,7 +17,7 @@ fn busca_binaria(mut lista: Vec<i32>, alvo: i32) -> Option<usize> {
     let mut fim = lista.len().saturating_sub(1);
 
     while inicio <= fim {
-        let meio = inicio + (fim - inicio)/2;
+        let meio = (inicio + fim) /2;
         match lista[meio].cmp(&alvo) {
             Ordering::Equal => return Some(meio),
             Ordering::Less => inicio = meio + 1,
@@ -29,7 +30,32 @@ fn busca_binaria(mut lista: Vec<i32>, alvo: i32) -> Option<usize> {
     None
 }
 
+fn busca_bin2(from:u32, to: u32) {
+    let numero = rand::random_range(from..=to);
+    let mut tentativas = 1;
+    let (mut inicio, mut fim) = (from,to);
+    loop {
+        let palpite = (inicio + fim) / 2;
+        match palpite.cmp(&numero) {
+            Ordering::Equal => {
+                println!("Acertou {} em {} tentativas", numero, tentativas);
+                break;
+            },
+            Ordering::Greater => {
+                println!("Tentativa {}: valor {} é maior", tentativas, palpite);
+                fim = palpite -1;                                
+            },
+            Ordering::Less => {
+                println!("Tentativa {}: valor {} é menor", tentativas, palpite);
+                inicio = palpite + 1;                                
+            }
+        }
+        tentativas += 1;
+    }
+}
+
 fn main() {
+    
     let lista = [0,14,2,5,77,8];
     let alvo = 77;
 
@@ -44,4 +70,6 @@ fn main() {
         Some(posicao) => println!("Valor encontrado na posição {}", posicao),
         None => println!("Valor não encontrado")
     };
+
+    busca_bin2(0, 10000);
 }
