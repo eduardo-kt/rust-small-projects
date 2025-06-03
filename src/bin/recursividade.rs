@@ -42,6 +42,16 @@ fn fibonacci(n:u32, a:u32, b:u32, i:u32) -> u32 {
 
 }
 
+fn fibonacci2(n: u32) -> u32 {
+    if n == 0 {
+        0
+    } else if n == 1 || n == 2 {
+            1
+        } else {
+        fibonacci2(n-1) + fibonacci2(n-2)
+    }
+}
+
 fn soma_digitos(n: u32) -> u32 {
     if n < 10 {
         n
@@ -51,6 +61,10 @@ fn soma_digitos(n: u32) -> u32 {
 }
 
 fn main() {
+
+    let value_fib2 = fibonacci2(7);
+    println!("{}", value_fib2);
+    
     let fibo_value = Fibonacci::new().fibo_position_nro(10);
     println!("{}", fibo_value);
 
