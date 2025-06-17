@@ -44,15 +44,19 @@ impl Baralho {
         self.cartas.shuffle(&mut rand::rng());
     }
 
-    fn draw_card(&mut self) -> Option<Carta> {
-        self.cartas.pop()
+    fn draw_card(&mut self, how_many: u8) -> Vec<Carta> {
+        let mut hand = Vec::new();
+        for _ in 0..how_many {
+            hand.push(self.cartas.pop().unwrap());
+        }
+        hand
     }
 }
 
 fn main() {
     let mut baralho = Baralho::new();
     baralho.shuffle();
-    let card = baralho.draw_card().unwrap();
+    let card = baralho.draw_card(5);
     println!("{:?}", card);
 
 }
