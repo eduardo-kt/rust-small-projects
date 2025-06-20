@@ -4,7 +4,7 @@ fn main() {
     println!("O que você quer comprar? ");
     let mut item = String::new();
     io::stdin().read_line(&mut item).unwrap();
-    item = item.trim().to_string();
+    let item = item.trim();
     
     println!("Qual o preço do item? ");
     let mut price = String::new();
