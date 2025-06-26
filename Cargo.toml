@@ -12,3 +12,4 @@ serde = { version="1.0", features = ["derive"]}
 dioxus = {version="0.5", features=["desktop"]}
 dioxus-desktop="0.5"
 nalgebra = "0.33.2"
+rand_distr = "0.5.1"
