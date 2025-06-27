@@ -6,7 +6,9 @@
 
 
 // redução de código implementando funções (ex. p. 184)
-fn largest(list: &[i32]) -> &i32 {
+// modifica função para tipo genérico
+// implementa trait PartialOrd para lidar cokm comparações
+fn largest<T: PartialOrd>(list: &[T]) -> &T {
     let mut largest = &list[0];
 
     for number in list {
@@ -18,11 +20,11 @@ fn largest(list: &[i32]) -> &i32 {
 }
 
 fn main() {
-    let nb_list1 = vec![34, 50, 25, 100, 65];
-    let large1 = largest(&nb_list1);
+    let list1 = vec![34, 50, 25, 100, 65];
+    let large1 = largest(&list1);
     println!("{}", large1);
 
-    let nb_list2 = vec![102, 34, 6000, 89, 54, 2, 43, 8];
-    let large2 = largest(&nb_list2);
+    let list2 = vec!['h', 'a', 'r', 'q', 'z', '2', '4', 'p'];
+    let large2 = largest(&list2);
     println!("{}", large2);    
 }
