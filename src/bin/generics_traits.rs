@@ -25,6 +25,12 @@ struct Point<T, Q> {
     y: Q,
 }
 
+// implementa método com genéricos
+impl <T,Q> Point<T,Q> {
+    fn new(x:T, y:Q) -> Point<T,Q> {
+        Point { x, y }
+    }    
+}
 
 
 fn main() {
@@ -37,5 +43,10 @@ fn main() {
     println!("{}", large2);    
 
     let ponto = Point{x:4.0, y:5};
+    let ponto2 = Point::new('a',4);
+    let ponto3 = Point::new(4.1, "Traits");
+
     println!("{} == {}", ponto.x, ponto.y);
+    println!("{}: {}", ponto2.x, ponto2.y);
+    println!("{}) {}", ponto3.x, ponto3.y);
 }
