@@ -19,6 +19,14 @@ fn largest<T: PartialOrd>(list: &[T]) -> &T {
     largest
 }
 
+#[derive(Debug)]
+struct Point<T, Q> {
+    x: T,
+    y: Q,
+}
+
+
+
 fn main() {
     let list1 = vec![34, 50, 25, 100, 65];
     let large1 = largest(&list1);
@@ -27,4 +35,7 @@ fn main() {
     let list2 = vec!['h', 'a', 'r', 'q', 'z', '2', '4', 'p'];
     let large2 = largest(&list2);
     println!("{}", large2);    
+
+    let ponto = Point{x:4.0, y:5};
+    println!("{} == {}", ponto.x, ponto.y);
 }
