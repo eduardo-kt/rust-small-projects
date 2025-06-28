@@ -5,3 +5,4 @@ pub mod agenda_contatos;
 pub mod hello_name;
 pub mod simple_tests;
 pub mod rectangles;
+pub mod testing_should_panic;
