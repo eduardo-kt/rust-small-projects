@@ -4,7 +4,7 @@ fn main() {
     let mut list2 = [5,8,124,1,66,12,88,3,11,55,4];
     let list3 = [32,4,106,1,99,13,27,8,44];
     let mut list4 = [108,12,3,44,1,7,99,34,8,14,32,65,20,10];
-    let mut list5 = [12,2,1004,702,66,3,25,103,7];
+    // let mut list5 = [12,2,1004,702,66,3,25,103,7];
 
     bubble_sort(&mut lista);
     merge_sort(&mut list4);
