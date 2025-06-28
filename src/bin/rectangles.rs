@@ -1,33 +1,4 @@
-#[derive(Debug)]
-struct Rectangle {
-    width: u32,
-    height: u32,
-}
-
-impl Rectangle {
-    fn area(&self) -> u32 {
-        self.height * self.width
-    }
-    fn width(&self) -> bool {
-        self.width > 0
-    }
-
-    fn contains(&self, other: &Rectangle) -> bool {
-        self.width > other.width && self.height > other.height
-    }
-    
-    fn square(size: u32) -> Self {
-        Self {
-            width: size,
-            height: size,
-        }        
-    }
-
-    fn new(width: u32, height:u32) -> Self {
-        Self { width, height }
-    }
-    
-}
+use rust_small_projs::rectangles::Rectangle;
 
 fn main() {
     let ret1 = Rectangle {
