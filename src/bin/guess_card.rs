@@ -10,6 +10,7 @@ enum Valor {
 }
 
 #[derive(Debug, Clone, Copy)]
+#[allow(dead_code)]
 struct Carta {
     naipe: Naipe,
     valor: Valor,
