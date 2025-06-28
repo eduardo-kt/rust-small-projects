@@ -35,8 +35,14 @@ mod tests {
 
     #[test]
     fn larger_contains_smaller() {
-        let large = Rectangle::new(23, 12);
+        let larger = Rectangle::new(23, 12);
         let smaller = Rectangle::new(7, 10);
-        assert!(large.contains(&smaller));
+        assert!(larger.contains(&smaller));
+    }
+        #[test]
+    fn smaller_cannot_contains_larger() {
+        let larger = Rectangle::new(30, 15);
+        let smaller = Rectangle::new(7, 25);
+        assert!(!smaller.contains(&larger));
     }
 }
