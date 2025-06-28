@@ -15,4 +15,11 @@ mod tests {
     fn simple_sum_fails() {
         assert_eq!(simple_sum(3, 5),9)
     }
+
+    #[test]
+    #[ignore = "waiting revision"] // rodar com: cargo test --lib -- --ignored
+    // para rodar todos use: cargo test --lib -- --include-ignored
+    fn simple_sum_waits() {
+        assert_eq!(simple_sum(-1, -1),-2)
+    }
 }
