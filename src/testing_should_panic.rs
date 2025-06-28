@@ -21,4 +21,10 @@ mod tests {
     fn greater_than_100() {
         Guess::new(102);
     }
+
+    #[test]
+    #[should_panic] 
+    fn not_greater_than_100_dont_panic() {
+        Guess::new(98);
+    }
 }
