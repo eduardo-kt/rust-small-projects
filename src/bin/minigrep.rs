@@ -3,10 +3,10 @@
 //! Execute com: cargo run --bin minigrep
 //! Execute ex(p.245) com: cargo run --bin minigrep needle haystack
 
-use std::env;
+use rust_small_projs::minigrep::run_minigrep;
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    dbg!(args);
+    run_minigrep();
+    
 
 }
