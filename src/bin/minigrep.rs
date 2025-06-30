@@ -16,6 +16,8 @@
 //! $Env:IGNORE_CASE=1; cargo run --bin minigrep to resources/poem.txt
 //! # para remover ignore case depois
 //! Remove-Item Env:IGNORE_CASE
+//! # para testar salvar conteúdo direto em arquivo .txt
+//! cargo run --bin minigrep to resources/poem.txt > output.txt
 //! ```
 
 use rust_small_projs::minigrep::run_minigrep;
