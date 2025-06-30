@@ -12,6 +12,10 @@
 //! cargo run --bin minigrep body resources/poem.txt
 //! # Rodar exemplo que não retorna nada
 //! cargo run --bin minigrep monomorphization resources/poem.txt
+//! # Com ignore_case no powershel
+//! $Env:IGNORE_CASE=1; cargo run --bin minigrep to resources/poem.txt
+//! # para remover ignore case depois
+//! Remove-Item Env:IGNORE_CASE
 //! ```
 
 use rust_small_projs::minigrep::run_minigrep;
