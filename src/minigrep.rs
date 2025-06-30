@@ -4,7 +4,7 @@ use std::fs;
 pub fn run_minigrep() {
     let args: Vec<String> = env::args().collect();
 
-    let config = parse_config(&args);
+    let config = Config::new(&args);
 
     println!("Searching for {}", config.query);
     println!("In file {}", config.file_path);
@@ -15,15 +15,17 @@ pub fn run_minigrep() {
     println!("With text:\n{contents}");    
 }
 
-struct Config {
-    query: String,
-    file_path: String,
+pub struct Config {
+    pub query: String,
+    pub file_path: String,
 }
 
-
-fn parse_config(args: &[String]) -> Config {
-    let query = args[1].clone();
-    let file_path = args[2].clone();
-
-    Config{ query, file_path }
+impl Config {
+    pub fn new(args: &[String]) -> Config {
+        Config { 
+            query : args[1].clone(),
+            file_path : args[2].clone(),
+        }
+    }
+    
 }
