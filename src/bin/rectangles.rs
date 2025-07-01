@@ -16,5 +16,14 @@ fn main() {
     println!("{:#?} {} {} {}", ret1, ret2.width(), ret1.area(), ret1.contains(&ret2));
     println!("{:#?}", sqr);
     println!("{:#?}", ret3.area());
+
+    let mut list = [
+        Rectangle::new(32, 7),
+        Rectangle::new(12, 22),
+        Rectangle::new(7, 20),
+        Rectangle::new(16, 12),
+    ];
+    list.sort_by_key(|r| r.width);
+    println!("{:#?}", list);
     
 }
