@@ -1,5 +1,6 @@
 use std::io::{self, Write};
 
+#[derive(Clone)]
 pub enum Cor {
     Verde,
     Amarelo,
@@ -14,6 +15,7 @@ impl Cor {
     }    
 }
 
+#[derive(Clone)]
 pub struct Card {
     cor: Cor,
     nro: u32,
@@ -48,22 +50,25 @@ impl ListaSimples {
 
         let entrada = entrada.trim().to_lowercase();
 
-        let card = match entrada.as_str() {
+        match entrada.as_str() {
             "1" => {
                 let card = Card {
                     cor: Cor::Amarelo,
                     nro: self.proximo_amarelo,
                 };
                 self.proximo_amarelo += 1;
-                card
+                let novo_elemento = Box::new(Elemento {
+                    dado: card.clone(),
+                    proximo: self.head.take()
+                });
+
+                self.head = Some(novo_elemento);
+
+                println!("Cartão inserido com sucesso!");
             },
             "2" => {
-                let card = Card {
-                    cor: Cor::Verde,
-                    nro: self.proximo_verde,
-                };
-                self.proximo_verde += 1;
-                card
+                self.inserir_sem_prioridade();
+                println!("Cartão inserido com sucesso!");
             },
             _ => {
                 println!("Entrada inválida. Retornando ao menu principal...");
@@ -71,13 +76,7 @@ impl ListaSimples {
             },
             
         };
-        let novo_elemento = Box::new(Elemento {
-            dado: card,
-            proximo: self.head.take()
-        });
 
-        self.head = Some(novo_elemento);
-        println!("Cartão inserido com sucesso!");
     }
 
     pub fn imprimir(&self) {
@@ -89,6 +88,45 @@ impl ListaSimples {
             atual = nodo.proximo.as_ref();
         }
         print!("None");
+    }
+
+    pub fn chamar_paciente(&mut self) {
+        match self.head.take() {
+            Some(nodo) => {
+                let card = nodo.dado;
+                println!("
+                Atenção paciente cartão {}{}!
+                Dirija-se ao atendimento.",
+            card.cor.id(), card.nro);
+            self.head = nodo.proximo;
+            }
+            None => println!("Lista de Espera vazia.")            
+        }
+    }
+    pub fn inserir_sem_prioridade(&mut self) -> Card {
+        let card = Card {
+            cor: Cor::Verde,
+            nro: self.proximo_verde,
+        };
+        self.proximo_verde += 1;
+
+        let novo = Box::new(Elemento {
+            dado: card.clone(),
+            proximo: None,
+        });
+
+        match self.head.as_mut() {
+            None => {
+                self.head = Some(novo);                
+            }
+            Some(mut atual) => {
+                while let Some(ref mut proximo) = atual.proximo  {
+                    atual = proximo;                    
+                }
+                atual.proximo = Some(novo);
+            }            
+        }
+        card
     }
     
 }
