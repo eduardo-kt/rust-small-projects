@@ -10,19 +10,11 @@
 //! Ao fazer um atendimento o primeiro cartão da fila é retirado e o usuário recebe
 //! uma comunicação de que o paciente do cartão deve se dirigir ao atendimento.//! 
 //! 
-//! TODO: implementar uma lista encadeada simples (ok)
 //! 
 //! ## Funcionalidades:
 //! - Inserir cartão (paciente) com e sem prioridade
-//! TODO: implementar função inserir() (ok)
-//! TODO: implementar função inserirSemPrioridade(nodo)
-//! TODO: implementar função inserirComPrioridade(nodo)
 //! - Remover cartão (atender paciente) do início da lista
-//! TODO: implementar função atenderPaciente()
 //! - Imprimir fila de espera
-//! TODO: implementar função imprimirListaEspera()
-//! 
-//! TODO: implementar menu principal (ok)
 //! 
 //! ## Exemplo de uso
 //! ```bash
