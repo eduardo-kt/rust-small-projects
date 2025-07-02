@@ -4,6 +4,16 @@ pub enum Cor {
     Verde,
     Amarelo,
 }
+
+impl Cor {
+    fn id(&self) -> &str {
+        match self {           
+            Cor::Amarelo => "A",
+            Cor::Verde => "V",
+        }
+    }    
+}
+
 pub struct Card {
     cor: Cor,
     nro: u32,
@@ -68,6 +78,17 @@ impl ListaSimples {
 
         self.head = Some(novo_elemento);
         println!("Cartão inserido com sucesso!");
+    }
+
+    pub fn imprimir(&self) {
+        let mut atual = self.head.as_ref();
+
+        while let Some(nodo) = atual {
+            let card = &nodo.dado;
+            print!("{}{} -> ", card.cor.id(), card.nro);
+            atual = nodo.proximo.as_ref();
+        }
+        print!("None");
     }
     
 }
