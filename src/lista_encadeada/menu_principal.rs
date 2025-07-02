@@ -23,7 +23,7 @@ pub fn menu() {
 
         match entrada.trim() {
             "1" => lista_hospitalar.inserir(),
-            "2" => println!("Mostra pacientes"),
+            "2" => lista_hospitalar.imprimir(),
             "3" => println!("Chama Paciente"),
             "4" => break println!("Saindo do Aplicativo..."),
             _ => println!("Escolha inválida. Retornando ao menu principal..."),
