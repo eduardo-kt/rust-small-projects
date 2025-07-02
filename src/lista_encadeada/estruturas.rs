@@ -52,18 +52,7 @@ impl ListaSimples {
 
         match entrada.as_str() {
             "1" => {
-                let card = Card {
-                    cor: Cor::Amarelo,
-                    nro: self.proximo_amarelo,
-                };
-                self.proximo_amarelo += 1;
-                let novo_elemento = Box::new(Elemento {
-                    dado: card.clone(),
-                    proximo: self.head.take()
-                });
-
-                self.head = Some(novo_elemento);
-
+                self.inserir_com_prioridade();
                 println!("Cartão inserido com sucesso!");
             },
             "2" => {
@@ -127,6 +116,47 @@ impl ListaSimples {
             }            
         }
         card
+    }
+
+    pub fn inserir_com_prioridade(&mut self) {
+        let card = Card {
+            cor: Cor::Amarelo,
+            nro: self.proximo_amarelo,
+        };
+        self.proximo_amarelo += 1;
+
+        let mut novo = Box::new(Elemento {
+            dado: card.clone(),
+            proximo: None,
+        });
+
+        match self.head.as_mut() {
+            None => {
+                self.head = Some(novo);
+            },
+            Some(head) => {
+                if matches!(head.dado.cor, Cor::Verde) {
+                    let novo_head = Box::new(Elemento {
+                        dado: card,
+                        proximo: self.head.take(),
+                    });
+                    self.head = Some(novo_head);
+                    println!("Cartão inserido com sucesso");
+                    return;
+                }
+                let mut atual = &mut self.head;
+                while let Some(ref nodo) = atual.as_ref() {
+                    if matches!(nodo.dado.cor, Cor::Verde) {
+                        break;
+                    }
+                    atual = &mut atual.as_mut().unwrap().proximo;
+                }
+                novo.proximo = atual.take();
+                *atual = Some(novo);
+            }
+        }
+        println!("Cartao inserido com sucesso")
+
     }
     
 }
