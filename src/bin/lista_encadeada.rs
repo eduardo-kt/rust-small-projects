@@ -29,6 +29,8 @@
 //! cargo run --bin lista_encadeada
 //! ```
 
+use rust_small_projs::lista_encadeada::menu_principal;
+
 fn main() {
-    
+    menu_principal::menu();
 }
