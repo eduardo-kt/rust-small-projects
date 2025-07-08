@@ -8,3 +8,4 @@ pub mod rectangles;
 pub mod testing_should_panic;
 pub mod minigrep;
 pub mod lista_encadeada;
+pub mod smart_pointers;
