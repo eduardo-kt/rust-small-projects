@@ -1,5 +1,19 @@
 //! Mostra exemplos do capítulo 17 do livro 
 //! Klabnik, S., & Nichols, C. (2023). The Rust programming language (2nd edition).
+
+pub struct Button {
+    pub width: u32,
+    pub height: u32,
+    pub label: String,    
+}
+
+impl Draw for Button {
+    fn draw(&self) {
+        // code to actually draw a button
+    }
+    
+}
+
 pub trait Draw {
     fn draw(&self);
 }
