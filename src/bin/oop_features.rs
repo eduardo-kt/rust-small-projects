@@ -1,5 +1,20 @@
 //! Mostra exemplos do capítulo 17 do livro 
 //! Klabnik, S., & Nichols, C. (2023). The Rust programming language (2nd edition).
+pub trait Draw {
+    fn draw(&self);
+}
+
+pub struct Screen {
+    pub components: Vec<Box<dyn Draw>>
+}
+
+impl Screen {
+    pub fn run(&self) {
+        for component in self.components.iter() {
+            component.draw();
+        }
+    }
+}
 
 #[derive(Default)]
 pub struct AveragedCollection {
