@@ -1,6 +1,7 @@
 //! Mostra exemplos do capítulo 17 do livro 
 //! Klabnik, S., & Nichols, C. (2023). The Rust programming language (2nd edition).
 
+#[derive(Default)]
 pub struct AveragedCollection {
     list: Vec<i32>,
     average: f64,
@@ -35,5 +36,12 @@ impl AveragedCollection {
     
 }
 fn main() {
+    let mut vetor = AveragedCollection::default();
+    vetor.add(5);
+    vetor.add(4);
+    vetor.add(3);
+    vetor.add(2);
+    vetor.add(1);
+    println!("{}",vetor.average());
 
 }
