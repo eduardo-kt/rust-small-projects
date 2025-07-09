@@ -19,3 +19,7 @@ impl<T> Deref for MyBox<T>  {
     }
     
 }
+
+pub fn hello(name: &str) {
+    println!("Hello, {name}");
+}
