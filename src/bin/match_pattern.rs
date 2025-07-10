@@ -1,6 +1,14 @@
 //! Mostra exemplos do capítulo 18 do livro 
 //! Klabnik, S., & Nichols, C. (2023). The Rust programming language (2nd edition).
+fn char_pattern() {
+    let x = 'h';
 
+    match x {
+        'a'..'h' => println!("ASCII a-g"),
+        'h'..='z' => println!("ASCII h-z"),
+        _ => println!("ASCII ..."),
+    }
+}
 fn main() {
     let favorite_color:Option<&str> = None;
     let is_tuesday = false;
@@ -29,4 +37,5 @@ fn main() {
             "Using blue as the background color"
         );
     }
+    char_pattern();
 }
